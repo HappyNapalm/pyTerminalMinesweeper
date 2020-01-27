@@ -35,6 +35,29 @@ def SetMineLoc (NumMines):
 	return(VerMineLoc ())
 	#MineLoc = sorted(MineLoc_sorted)
 
+def DrawBoard (Max_x,Max_y):
+	strBoard = ''
+	for y in range(0,Max_y):
+		for x in range(0,Max_x):
+			strBoard = strBoard + "%"
+		strBoard = strBoard + "\n"
+	print(strBoard)
+
+def GetCommands():
+	Command = input("Enter Coordinates X,Y\n")
+	print(Command)
+	ProCom = Command.split(',')
+	for x in range(0,len(MineLoc_sorted)):
+		if(int(ProCom[0]) == MineLoc_sorted[x][0] and
+                   int(ProCom[1]) == MineLoc_sorted[x][1]):
+			print("Kaboom!")
+			return(0)
+	return(1)
+
+
 MineLoc_sorted = SetMineLoc(MaxMines)
 print(sorted(MineLoc))
 print(MineLoc_sorted)
+DrawBoard(MAX_x,MAX_y)
+while(GetCommands()):
+	asdf = 0

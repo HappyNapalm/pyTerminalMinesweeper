@@ -37,14 +37,21 @@ def SetMineLoc (NumMines):
 
 def DrawBoard (Max_x,Max_y):
 	strBoard = ''
-	for y in range(0,Max_y):
-		for x in range(0,Max_x):
-			strBoard = strBoard + "%"
+	VAR = 0
+	for x in range(0,Max_x):
+		for y in range(0,Max_y):
+			if (x == MineLoc_sorted[VAR][0] and y == MineLoc_sorted[VAR][1]):
+				strBoard = strBoard + "&"
+				if(VAR < MaxMines - 1):
+					VAR = VAR + 1
+			else:
+				strBoard = strBoard + "%"
 		strBoard = strBoard + "\n"
 	print(strBoard)
 
+#Include the drawing here so you can redraw it! Allow the commands to update the board.
 def GetCommands():
-	Command = input("Enter Coordinates X,Y\n")
+	Command = input("Enter Coordinates Y,X\n")
 	print(Command)
 	ProCom = Command.split(',')
 	for x in range(0,len(MineLoc_sorted)):
@@ -59,5 +66,6 @@ MineLoc_sorted = SetMineLoc(MaxMines)
 print(sorted(MineLoc))
 print(MineLoc_sorted)
 DrawBoard(MAX_x,MAX_y)
-while(GetCommands()):
-	asdf = 0
+asdf = 1
+while(asdf):
+	asdf = GetCommands()
